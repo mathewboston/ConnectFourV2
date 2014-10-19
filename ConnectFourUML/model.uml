@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ActionLanguage="http://www.omg.org/spec/ALF/20120827/ActionLanguage-Profile" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xsi:schemaLocation="http://www.omg.org/spec/ALF/20120827/ActionLanguage-Profile pathmap://PAPYRUS_ACTIONLANGUAGE_PROFILE/ActionLanguage-Profile.profile.uml#_sYse0YZLEeKyw49uR6nx3g">
+  <uml:Model xmi:id="_nhLXsFMzEeSiW-3KOzqcRg" name="model">
+    <packagedElement xmi:type="uml:StateMachine" xmi:id="_nk1vsFMzEeSiW-3KOzqcRg" name="ConnectFour">
+      <region xmi:type="uml:Region" xmi:id="_nlf3AFMzEeSiW-3KOzqcRg" name="Region1">
+        <transition xmi:type="uml:Transition" xmi:id="_7lssIFPGEeSiW-3KOzqcRg" name="Quit Button; Pressed" source="_rN-PwFPGEeSiW-3KOzqcRg" target="_yIPTMFPGEeSiW-3KOzqcRg"/>
+        <transition xmi:type="uml:Transition" xmi:id="_KfM3AFPHEeSiW-3KOzqcRg" name="Game;Starts" source="_w6kmMFPGEeSiW-3KOzqcRg" target="_rN-PwFPGEeSiW-3KOzqcRg"/>
+        <transition xmi:type="uml:Transition" xmi:id="_ezMUoFPHEeSiW-3KOzqcRg" name="New Game Button;Pressed" source="_rN-PwFPGEeSiW-3KOzqcRg" target="_B86F0FPHEeSiW-3KOzqcRg"/>
+        <transition xmi:type="uml:Transition" xmi:id="_kwR-IFPHEeSiW-3KOzqcRg" name="Players[Not Added]" source="_B86F0FPHEeSiW-3KOzqcRg" target="_Dcg3YFPHEeSiW-3KOzqcRg"/>
+        <transition xmi:type="uml:Transition" xmi:id="_oU4tUFPHEeSiW-3KOzqcRg" name="Player 2 [Not Added]" source="_Dcg3YFPHEeSiW-3KOzqcRg" target="_Dcg3YFPHEeSiW-3KOzqcRg"/>
+        <transition xmi:type="uml:Transition" xmi:id="_yog5QFPHEeSiW-3KOzqcRg" name="Players[Added]" source="_B86F0FPHEeSiW-3KOzqcRg" target="_FHJ0QFPHEeSiW-3KOzqcRg"/>
+        <transition xmi:type="uml:Transition" xmi:id="_06DeEFPHEeSiW-3KOzqcRg" name="Players[Added]" source="_Dcg3YFPHEeSiW-3KOzqcRg" target="_FHJ0QFPHEeSiW-3KOzqcRg"/>
+        <transition xmi:type="uml:Transition" xmi:id="_7cM8cFPHEeSiW-3KOzqcRg" name="Token;Placed" source="_FHJ0QFPHEeSiW-3KOzqcRg" target="_VUlFIFPHEeSiW-3KOzqcRg"/>
+        <transition xmi:type="uml:Transition" xmi:id="_MUquYFPIEeSiW-3KOzqcRg" name="Token [Valid]" source="_VUlFIFPHEeSiW-3KOzqcRg" target="_MaYKQFPHEeSiW-3KOzqcRg"/>
+        <transition xmi:type="uml:Transition" xmi:id="_QWng4FPIEeSiW-3KOzqcRg" name="Token[Not Valid]" source="_VUlFIFPHEeSiW-3KOzqcRg" target="_FHJ0QFPHEeSiW-3KOzqcRg"/>
+        <transition xmi:type="uml:Transition" xmi:id="_awVGsFPIEeSiW-3KOzqcRg" name="New Game Button;Pressed" source="_MaYKQFPHEeSiW-3KOzqcRg" target="_B86F0FPHEeSiW-3KOzqcRg"/>
+        <transition xmi:type="uml:Transition" xmi:id="_AsnQsFPJEeSiW-3KOzqcRg" name="No New Game Button;Pressed" source="_MaYKQFPHEeSiW-3KOzqcRg" target="_rN-PwFPGEeSiW-3KOzqcRg"/>
+        <transition xmi:type="uml:Transition" xmi:id="_RpLfgFPJEeSiW-3KOzqcRg" name="Quit Button;Pressed" source="_MaYKQFPHEeSiW-3KOzqcRg" target="_LntsUFPJEeSiW-3KOzqcRg"/>
+        <transition xmi:type="uml:Transition" xmi:id="_VDrQcFPJEeSiW-3KOzqcRg" name="Game[No Tie]" source="_MaYKQFPHEeSiW-3KOzqcRg" target="_RUc3kFPHEeSiW-3KOzqcRg"/>
+        <transition xmi:type="uml:Transition" xmi:id="_bcbiQFPJEeSiW-3KOzqcRg" name="Game[No wins]" source="_RUc3kFPHEeSiW-3KOzqcRg" target="_FHJ0QFPHEeSiW-3KOzqcRg"/>
+        <transition xmi:type="uml:Transition" xmi:id="_d9KZoFPJEeSiW-3KOzqcRg" name="New Game Button;Pressed" source="_RUc3kFPHEeSiW-3KOzqcRg" target="_B86F0FPHEeSiW-3KOzqcRg"/>
+        <transition xmi:type="uml:Transition" xmi:id="_luRlgFPJEeSiW-3KOzqcRg" name="No New Game Button;Pressed" source="_RUc3kFPHEeSiW-3KOzqcRg" target="_rN-PwFPGEeSiW-3KOzqcRg"/>
+        <transition xmi:type="uml:Transition" xmi:id="_uxEbsFPJEeSiW-3KOzqcRg" name="Quit Button;Pressed" source="_RUc3kFPHEeSiW-3KOzqcRg" target="_tHVdwFPJEeSiW-3KOzqcRg"/>
+        <transition xmi:type="uml:Transition" xmi:id="_6d_84FPJEeSiW-3KOzqcRg" name="Game[idle]" source="_rN-PwFPGEeSiW-3KOzqcRg" target="_rN-PwFPGEeSiW-3KOzqcRg"/>
+        <transition xmi:type="uml:Transition" xmi:id="_JdUb4FPKEeSiW-3KOzqcRg" name="Game[idle]" source="_FHJ0QFPHEeSiW-3KOzqcRg" target="_FHJ0QFPHEeSiW-3KOzqcRg"/>
+        <subvertex xmi:type="uml:State" xmi:id="_rN-PwFPGEeSiW-3KOzqcRg" name="Welcome Screen"/>
+        <subvertex xmi:type="uml:Pseudostate" xmi:id="_w6kmMFPGEeSiW-3KOzqcRg" name="Start"/>
+        <subvertex xmi:type="uml:FinalState" xmi:id="_yIPTMFPGEeSiW-3KOzqcRg" name="End"/>
+        <subvertex xmi:type="uml:State" xmi:id="_B86F0FPHEeSiW-3KOzqcRg" name="Starting New Game"/>
+        <subvertex xmi:type="uml:State" xmi:id="_Dcg3YFPHEeSiW-3KOzqcRg" name="Adding New Players"/>
+        <subvertex xmi:type="uml:State" xmi:id="_FHJ0QFPHEeSiW-3KOzqcRg" name="Playing Game">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_YuhccFPHEeSiW-3KOzqcRg">
+            <body>
+</body>
+          </ownedComment>
+        </subvertex>
+        <subvertex xmi:type="uml:State" xmi:id="_MaYKQFPHEeSiW-3KOzqcRg" name="Checking for Tie"/>
+        <subvertex xmi:type="uml:State" xmi:id="_RUc3kFPHEeSiW-3KOzqcRg" name="Checking for Winner"/>
+        <subvertex xmi:type="uml:State" xmi:id="_VUlFIFPHEeSiW-3KOzqcRg" name="Checking Player Input"/>
+        <subvertex xmi:type="uml:FinalState" xmi:id="_LntsUFPJEeSiW-3KOzqcRg" name="End"/>
+        <subvertex xmi:type="uml:FinalState" xmi:id="_tHVdwFPJEeSiW-3KOzqcRg" name="End"/>
+      </region>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Interface" xmi:id="_syK6wFM0EeSiW-3KOzqcRg" name="ConnectFour" isAbstract="true" useCase="_nPwloFM1EeSiW-3KOzqcRg _K7Z5kFPBEeSiW-3KOzqcRg _PiojYFPBEeSiW-3KOzqcRg _VElJAFPBEeSiW-3KOzqcRg _it76oFPBEeSiW-3KOzqcRg">
+      <ownedUseCase xmi:type="uml:UseCase" xmi:id="_nPwloFM1EeSiW-3KOzqcRg" name="Play a Game" subject="_syK6wFM0EeSiW-3KOzqcRg">
+        <extensionPoint xmi:type="uml:ExtensionPoint" xmi:id="_R-4jYFPBEeSiW-3KOzqcRg"/>
+        <include xmi:type="uml:Include" xmi:id="_OTX68FPBEeSiW-3KOzqcRg" addition="_K7Z5kFPBEeSiW-3KOzqcRg"/>
+      </ownedUseCase>
+      <ownedUseCase xmi:type="uml:UseCase" xmi:id="_K7Z5kFPBEeSiW-3KOzqcRg" name="Player Input" subject="_syK6wFM0EeSiW-3KOzqcRg"/>
+      <ownedUseCase xmi:type="uml:UseCase" xmi:id="_PiojYFPBEeSiW-3KOzqcRg" name="Place a Token" subject="_syK6wFM0EeSiW-3KOzqcRg">
+        <extend xmi:type="uml:Extend" xmi:id="_R-tkQFPBEeSiW-3KOzqcRg" extendedCase="_nPwloFM1EeSiW-3KOzqcRg" extensionLocation="_R-4jYFPBEeSiW-3KOzqcRg"/>
+        <include xmi:type="uml:Include" xmi:id="_hytogFPBEeSiW-3KOzqcRg" addition="_K7Z5kFPBEeSiW-3KOzqcRg"/>
+      </ownedUseCase>
+      <ownedUseCase xmi:type="uml:UseCase" xmi:id="_VElJAFPBEeSiW-3KOzqcRg" name="Declare a winner/tie" subject="_syK6wFM0EeSiW-3KOzqcRg">
+        <extend xmi:type="uml:Extend" xmi:id="_Wsp6EFPBEeSiW-3KOzqcRg" extendedCase="_nPwloFM1EeSiW-3KOzqcRg" extensionLocation="_R-4jYFPBEeSiW-3KOzqcRg"/>
+      </ownedUseCase>
+      <ownedUseCase xmi:type="uml:UseCase" xmi:id="_it76oFPBEeSiW-3KOzqcRg" name="Draw Game Board" subject="_syK6wFM0EeSiW-3KOzqcRg"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Actor" xmi:id="_2nUa8FM0EeSiW-3KOzqcRg" name="Players"/>
+    <packagedElement xmi:type="uml:Interface" xmi:id="_6sybgFM0EeSiW-3KOzqcRg" name="Players" isAbstract="true">
+      <nestedClassifier xmi:type="uml:Actor" xmi:id="_EdI7QFM1EeSiW-3KOzqcRg" name="Player 2" isAbstract="true"/>
+      <nestedClassifier xmi:type="uml:Actor" xmi:id="_F5JmQFM1EeSiW-3KOzqcRg" name="Player 1"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_Jcsf4FPBEeSiW-3KOzqcRg" name="A_players_play a game" memberEnd="_Jcsf4VPBEeSiW-3KOzqcRg _Jcsf5FPBEeSiW-3KOzqcRg">
+      <ownedEnd xmi:type="uml:Property" xmi:id="_Jcsf4VPBEeSiW-3KOzqcRg" name="players" type="_2nUa8FM0EeSiW-3KOzqcRg" association="_Jcsf4FPBEeSiW-3KOzqcRg">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_Jcsf4lPBEeSiW-3KOzqcRg" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_Jcsf41PBEeSiW-3KOzqcRg" value="1"/>
+      </ownedEnd>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_Jcsf5FPBEeSiW-3KOzqcRg" name="play a game" type="_nPwloFM1EeSiW-3KOzqcRg" association="_Jcsf4FPBEeSiW-3KOzqcRg">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_Jcsf5VPBEeSiW-3KOzqcRg" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_Jcsf5lPBEeSiW-3KOzqcRg" value="1"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Actor" xmi:id="_YVNMQFPBEeSiW-3KOzqcRg" name="Mouse"/>
+    <packagedElement xmi:type="uml:Actor" xmi:id="_ZAIYkFPBEeSiW-3KOzqcRg" name="Keyboard"/>
+    <packagedElement xmi:type="uml:Actor" xmi:id="_bDYpwFPBEeSiW-3KOzqcRg" name="Screen"/>
+    <packagedElement xmi:type="uml:Association" xmi:id="_eULsIFPBEeSiW-3KOzqcRg" name="A_keyboard_player input" memberEnd="_eULsIVPBEeSiW-3KOzqcRg _eULsJFPBEeSiW-3KOzqcRg">
+      <ownedEnd xmi:type="uml:Property" xmi:id="_eULsIVPBEeSiW-3KOzqcRg" name="keyboard" type="_ZAIYkFPBEeSiW-3KOzqcRg" association="_eULsIFPBEeSiW-3KOzqcRg">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_eULsIlPBEeSiW-3KOzqcRg" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_eULsI1PBEeSiW-3KOzqcRg" value="1"/>
+      </ownedEnd>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_eULsJFPBEeSiW-3KOzqcRg" name="player input" type="_K7Z5kFPBEeSiW-3KOzqcRg" association="_eULsIFPBEeSiW-3KOzqcRg">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_eULsJVPBEeSiW-3KOzqcRg" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_eULsJlPBEeSiW-3KOzqcRg" value="1"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_fRVQ4FPBEeSiW-3KOzqcRg" name="A_mouse_player input" memberEnd="_fRVQ4VPBEeSiW-3KOzqcRg _fRVQ5FPBEeSiW-3KOzqcRg">
+      <ownedEnd xmi:type="uml:Property" xmi:id="_fRVQ4VPBEeSiW-3KOzqcRg" name="mouse" type="_YVNMQFPBEeSiW-3KOzqcRg" association="_fRVQ4FPBEeSiW-3KOzqcRg">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_fRVQ4lPBEeSiW-3KOzqcRg" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_fRVQ41PBEeSiW-3KOzqcRg" value="1"/>
+      </ownedEnd>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_fRVQ5FPBEeSiW-3KOzqcRg" name="player input" type="_K7Z5kFPBEeSiW-3KOzqcRg" association="_fRVQ4FPBEeSiW-3KOzqcRg">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_fRVQ5VPBEeSiW-3KOzqcRg" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_fRVQ5lPBEeSiW-3KOzqcRg" value="1"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_kUawQFPBEeSiW-3KOzqcRg" name="A_screen_draw game board" memberEnd="_kUawQVPBEeSiW-3KOzqcRg _kUawRFPBEeSiW-3KOzqcRg">
+      <ownedEnd xmi:type="uml:Property" xmi:id="_kUawQVPBEeSiW-3KOzqcRg" name="screen" type="_bDYpwFPBEeSiW-3KOzqcRg" association="_kUawQFPBEeSiW-3KOzqcRg">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_kUawQlPBEeSiW-3KOzqcRg" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_kUawQ1PBEeSiW-3KOzqcRg" value="1"/>
+      </ownedEnd>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_kUawRFPBEeSiW-3KOzqcRg" name="draw game board" type="_it76oFPBEeSiW-3KOzqcRg" association="_kUawQFPBEeSiW-3KOzqcRg">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_kUawRVPBEeSiW-3KOzqcRg" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_kUawRlPBEeSiW-3KOzqcRg" value="1"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_vheekFPBEeSiW-3KOzqcRg" name="ConnectFour">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_j9BugFPCEeSiW-3KOzqcRg" name="player Input" type="_6WGewFPBEeSiW-3KOzqcRg" association="_j9CVkFPCEeSiW-3KOzqcRg">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_j9BugVPCEeSiW-3KOzqcRg" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_j9BuglPCEeSiW-3KOzqcRg" value="1"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_P4KckFPDEeSiW-3KOzqcRg" name="Player 1" visibility="private" type="_3yWIkFPBEeSiW-3KOzqcRg"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_cQIe0FPDEeSiW-3KOzqcRg" name="Player 2" visibility="private" type="_3yWIkFPBEeSiW-3KOzqcRg"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_ivSTkFPDEeSiW-3KOzqcRg" name="newPlayer"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_ju7ysFPDEeSiW-3KOzqcRg" name="newGame"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_3yWIkFPBEeSiW-3KOzqcRg" name="Players">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_iBBU0FPCEeSiW-3KOzqcRg" name="player Input" type="_6WGewFPBEeSiW-3KOzqcRg" association="_iBB74FPCEeSiW-3KOzqcRg">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_iBBU0VPCEeSiW-3KOzqcRg" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_iBBU0lPCEeSiW-3KOzqcRg" value="1"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_2cQ0gFPDEeSiW-3KOzqcRg" name="Name" visibility="private"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_27egEFPDEeSiW-3KOzqcRg" name="Token" visibility="private" isUnique="false"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_1KFa8FPDEeSiW-3KOzqcRg" name="getName"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_1g6mkFPDEeSiW-3KOzqcRg" name="getToken"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_6WGewFPBEeSiW-3KOzqcRg" name="Player Input">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_c2oBoFPEEeSiW-3KOzqcRg" name="TokenType" visibility="private"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_dLHD4FPEEeSiW-3KOzqcRg" name="BoardLocation" visibility="private"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_hRnmQFPEEeSiW-3KOzqcRg" name="KeyPress" visibility="private"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_XKbT0FPEEeSiW-3KOzqcRg" name="getMouseInput"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_XtZeAFPEEeSiW-3KOzqcRg" name="getKeyboardInput"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_8_jNQFPBEeSiW-3KOzqcRg" name="Game Board">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_IYfJgFPEEeSiW-3KOzqcRg" name="SizeX" visibility="private"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_IkygIFPEEeSiW-3KOzqcRg" name="SizeY" visibility="private"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_SxrK4FPEEeSiW-3KOzqcRg" name="Tokens[]" visibility="private"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_I27ZAFPEEeSiW-3KOzqcRg" name="insertToken"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_N_TBAFPEEeSiW-3KOzqcRg" name="getSizeX"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_OlooQFPEEeSiW-3KOzqcRg" name="getSizeY"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_-cCZYFPBEeSiW-3KOzqcRg" name="Win Status">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_stCLkFPCEeSiW-3KOzqcRg" name="players" type="_3yWIkFPBEeSiW-3KOzqcRg" association="_stF18FPCEeSiW-3KOzqcRg">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_stCLkVPCEeSiW-3KOzqcRg" value="2"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_stCLklPCEeSiW-3KOzqcRg" value="2"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_2b1zMFPCEeSiW-3KOzqcRg" name="game board" type="_8_jNQFPBEeSiW-3KOzqcRg">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_2b3BUFPCEeSiW-3KOzqcRg" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_2b3BUVPCEeSiW-3KOzqcRg" value="1"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_hXST8FPFEeSiW-3KOzqcRg" name="CurrentPlayer"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_CtNzUFPFEeSiW-3KOzqcRg" name="CheckWin"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_C9frAFPFEeSiW-3KOzqcRg" name="CheckTie"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_ALb6cFPCEeSiW-3KOzqcRg" name="Draw Game Board">
+      <generalization xmi:type="uml:Generalization" xmi:id="_s7hooFPEEeSiW-3KOzqcRg" general="_8_jNQFPBEeSiW-3KOzqcRg"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_yFhoUFPEEeSiW-3KOzqcRg" name="PlayerTie" visibility="private"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_3_E1oFPEEeSiW-3KOzqcRg" name="PlayerWin" visibility="private"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_mNHP4FPEEeSiW-3KOzqcRg" name="Draw"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_mZ-nMFPEEeSiW-3KOzqcRg" name="DrawWin"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_mm96UFPEEeSiW-3KOzqcRg" name="DrawTie"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_R_S9oFPCEeSiW-3KOzqcRg" memberEnd="_R_S9oVPCEeSiW-3KOzqcRg _R_RvgFPCEeSiW-3KOzqcRg">
+      <ownedEnd xmi:type="uml:Property" xmi:id="_R_S9oVPCEeSiW-3KOzqcRg" name="players" type="_3yWIkFPBEeSiW-3KOzqcRg" aggregation="shared" association="_R_S9oFPCEeSiW-3KOzqcRg">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_R_S9olPCEeSiW-3KOzqcRg" value="2"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_R_S9o1PCEeSiW-3KOzqcRg" value="2"/>
+      </ownedEnd>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_R_RvgFPCEeSiW-3KOzqcRg" name="connectFour" type="_vheekFPBEeSiW-3KOzqcRg" association="_R_S9oFPCEeSiW-3KOzqcRg">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_R_RvgVPCEeSiW-3KOzqcRg" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_R_RvglPCEeSiW-3KOzqcRg" value="1"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_eGBe4FPCEeSiW-3KOzqcRg" memberEnd="_eGBe4VPCEeSiW-3KOzqcRg _eGAQwFPCEeSiW-3KOzqcRg">
+      <ownedEnd xmi:type="uml:Property" xmi:id="_eGBe4VPCEeSiW-3KOzqcRg" name="game Board" type="_8_jNQFPBEeSiW-3KOzqcRg" aggregation="composite" association="_eGBe4FPCEeSiW-3KOzqcRg">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_eGBe4lPCEeSiW-3KOzqcRg" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_eGBe41PCEeSiW-3KOzqcRg" value="1"/>
+      </ownedEnd>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_eGAQwFPCEeSiW-3KOzqcRg" name="connectFour" type="_vheekFPBEeSiW-3KOzqcRg" association="_eGBe4FPCEeSiW-3KOzqcRg">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_eGAQwVPCEeSiW-3KOzqcRg" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_eGAQwlPCEeSiW-3KOzqcRg" value="1"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_iBB74FPCEeSiW-3KOzqcRg" memberEnd="_iBB74VPCEeSiW-3KOzqcRg _iBBU0FPCEeSiW-3KOzqcRg">
+      <ownedEnd xmi:type="uml:Property" xmi:id="_iBB74VPCEeSiW-3KOzqcRg" name="players" type="_3yWIkFPBEeSiW-3KOzqcRg" association="_iBB74FPCEeSiW-3KOzqcRg">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_iBB74lPCEeSiW-3KOzqcRg" value="2"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_iBB741PCEeSiW-3KOzqcRg" value="2"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_j9CVkFPCEeSiW-3KOzqcRg" memberEnd="_j9CVkVPCEeSiW-3KOzqcRg _j9BugFPCEeSiW-3KOzqcRg">
+      <name xsi:nil="true"/>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_j9CVkVPCEeSiW-3KOzqcRg" name="connectFour" type="_vheekFPBEeSiW-3KOzqcRg" association="_j9CVkFPCEeSiW-3KOzqcRg">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_j9CVklPCEeSiW-3KOzqcRg" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_j9CVk1PCEeSiW-3KOzqcRg" value="1"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_stF18FPCEeSiW-3KOzqcRg" memberEnd="_stF18VPCEeSiW-3KOzqcRg _stCLkFPCEeSiW-3KOzqcRg">
+      <ownedEnd xmi:type="uml:Property" xmi:id="_stF18VPCEeSiW-3KOzqcRg" name="win Status" type="_-cCZYFPBEeSiW-3KOzqcRg" association="_stF18FPCEeSiW-3KOzqcRg">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_stF18lPCEeSiW-3KOzqcRg" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_stF181PCEeSiW-3KOzqcRg" value="1"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Dependency" xmi:id="_Bw0HYFPDEeSiW-3KOzqcRg" client="_-cCZYFPBEeSiW-3KOzqcRg" supplier="_8_jNQFPBEeSiW-3KOzqcRg"/>
+    <packagedElement xmi:type="uml:Dependency" xmi:id="__n5BIFPEEeSiW-3KOzqcRg" client="_ALb6cFPCEeSiW-3KOzqcRg" supplier="_-cCZYFPBEeSiW-3KOzqcRg"/>
+    <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_uEzS8FPGEeSiW-3KOzqcRg">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_uFVecFPGEeSiW-3KOzqcRg" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="pathmap://PAPYRUS_ACTIONLANGUAGE_PROFILE/ActionLanguage-Profile.profile.uml#_sYse0YZLEeKyw49uR6nx3g"/>
+      </eAnnotations>
+      <appliedProfile xmi:type="uml:Profile" href="pathmap://PAPYRUS_ACTIONLANGUAGE_PROFILE/ActionLanguage-Profile.profile.uml#ActionLanguage"/>
+    </profileApplication>
+  </uml:Model>
+  <ActionLanguage:TextualRepresentation xmi:id="_uFZI0FPGEeSiW-3KOzqcRg" language="org.eclipse.papyrus.uml.textedit.state.xtext.UmlState"/>
+  <ActionLanguage:TextualRepresentation xmi:id="_3NYBAFPGEeSiW-3KOzqcRg" language="org.eclipse.papyrus.uml.textedit.transition.xtext.UmlTransition"/>
+  <ActionLanguage:TextualRepresentation xmi:id="_GDQQIFPHEeSiW-3KOzqcRg" language="org.eclipse.papyrus.uml.textedit.state.xtext.UmlState"/>
+  <ActionLanguage:TextualRepresentation xmi:id="_OACggFPHEeSiW-3KOzqcRg" language="org.eclipse.papyrus.uml.textedit.state.xtext.UmlState"/>
+  <ActionLanguage:TextualRepresentation xmi:id="_YuiDgFPHEeSiW-3KOzqcRg" base_Comment="_YuhccFPHEeSiW-3KOzqcRg" language="org.eclipse.papyrus.uml.textedit.state.xtext.UmlState"/>
+  <ActionLanguage:TextualRepresentation xmi:id="_puOe0VPHEeSiW-3KOzqcRg" language="org.eclipse.papyrus.uml.textedit.transition.xtext.UmlTransition"/>
+</xmi:XMI>
