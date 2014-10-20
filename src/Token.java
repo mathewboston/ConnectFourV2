@@ -68,8 +68,8 @@ public class Token {
 
 		final int prime = 31;
 		final int a;
-		if(this.tokenOne) a = 1;
-		else a = 2;
+		if(this.tokenOne) a = 111;
+		else a = 425;
 		int result = 1;
 		result = prime * result + (int) (a ^ (a >>> 32));
 		return result;
