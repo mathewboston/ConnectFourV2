@@ -27,12 +27,17 @@ public class ConnectFourGame {
 	public void mainGame(){
 		
 		while(!gameBoard.getGameStatus()){
-			gameBoard.setGameToken(player1);
-			gameBoard.setGameToken(player2);
-			break;
-		}
-		gameBoard.printAnalogGameBoard();
-		if(gameBoard.getGameStatus()) System.out.println("Yay");
+			if(gameBoard.setGameToken(player1, ui.askUser(1, 8)-1) == -1){
+				System.out.println("Column full");
+			}
+			gameBoard.printAnalogGameBoard();
+			if(gameBoard.setGameToken(player2, ui.askUser(1, 8)-1) == -1){
+				System.out.println("Column full");
+			}
+			gameBoard.printAnalogGameBoard();
+			//gameBoard.setGameToken(player2);
+			if(gameBoard.getGameStatus()) System.out.println("Yay");			
+		}		
 	}
 	
 	public static void main(String args[]){
