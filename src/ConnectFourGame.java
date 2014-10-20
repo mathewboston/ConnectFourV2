@@ -2,6 +2,7 @@ public class ConnectFourGame {
 	
 	private Player player1;
 	private Player player2;
+	private int playerTurnBoard;
 	private ConnectFourBoard gameBoard;
 	private UserInteraction ui;
 
@@ -15,6 +16,7 @@ public class ConnectFourGame {
 	
 	public ConnectFourGame(int x, int y) {
 
+		playerTurnBoard = 1;
 		player1 = new Player();
 		player2 = new Player();
 		player1.setTokenType(true);
@@ -24,25 +26,31 @@ public class ConnectFourGame {
 		mainGame();
 	}
 	
+	public void playerTurn(){
+		
+		if(playerTurnBoard==1) --playerTurnBoard;
+		else ++playerTurnBoard;
+	}
+	
+	public Player playerTurn(int player){
+		
+		return (player==1) ? player1 : player2;
+	}	
+	
 	public void mainGame(){
 		
+		gameBoard.printAnalogGameBoardClean();
 		while(!gameBoard.getGameStatus()){
-			if(gameBoard.setGameToken(player1, ui.askUser(1, 8)-1) == -1){
+			if(gameBoard.setGameToken(playerTurn(playerTurnBoard), ui.askUser(1, 8)-1) == -1)
 				System.out.println("Column full");
-			}
-			gameBoard.printAnalogGameBoard();
-			if(gameBoard.setGameToken(player2, ui.askUser(1, 8)-1) == -1){
-				System.out.println("Column full");
-			}
-			gameBoard.printAnalogGameBoard();
-			//gameBoard.setGameToken(player2);
-			if(gameBoard.getGameStatus()) System.out.println("Yay");			
+			playerTurn();
+			gameBoard.printAnalogGameBoard(); //debug
+			if(gameBoard.getGameStatus()) System.out.println("Yay"); //debug			
 		}		
 	}
 	
 	public static void main(String args[]){
 		
-		ConnectFourGame currentGame = new ConnectFourGame(8,7);
-		//currentGame.gameBoard.printAnalogGameBoard();
+		/*ConnectFourGame currentGame =*/ new ConnectFourGame(8,7);
 	}
 }

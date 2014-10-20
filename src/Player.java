@@ -19,6 +19,11 @@ public class Player {
 
 		name = n;
 	}
+	
+	public String getTokenImageType(){
+		
+		return tokenType.getTokenImageType();
+	}
 
 	public int getTokenType() {
 

@@ -51,6 +51,11 @@ public class ConnectFourBoard {
 
 		drawAnalogGameBoard.printAnalogGameBoard(gameBoard);
 	}
+	
+	public void printAnalogGameBoardClean(){
+
+		drawAnalogGameBoard.printAnalogGameBoardClean(gameBoard);
+	}
 
 	public int getSizeX() {
 

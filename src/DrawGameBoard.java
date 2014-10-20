@@ -1,67 +1,79 @@
-//import java.awt.Button;
-//import java.awt.FlowLayout;
-//import java.awt.Frame;
-//import java.awt.Label;
-//import java.awt.TextField;
-//import java.awt.event.ActionEvent;
-//import java.awt.event.ActionListener;
+import java.awt.*;
+import java.awt.event.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
 
 public class DrawGameBoard{  //extends Frame implements ActionListener{
 
-	//	private Label lblCount;    // Declare component Label
-	//	private TextField tfCount; // Declare component TextField
-	//	private Button btnCount;   // Declare component Button
-	//	private int count = 0;     // Counter's value
+	private Frame mainFrame;
+	private Label headerLabel;
+	private Label statusLabel;
+	private Panel controlPanel;
 
 	public DrawGameBoard() {
-	//		// TODO Auto-generated constructor stub
-	//		setLayout(new FlowLayout());
-	//		// "super" Frame sets its layout to FlowLayout, which arranges the components
-	//		//  from left-to-right, and flow to next row from top-to-bottom.
-	//
-	//		lblCount = new Label("Counter");  // construct Label
-	//		add(lblCount);                    // "super" Frame adds Label
-	//
-	//		tfCount = new TextField("0", 10); // construct TextField
-	//		tfCount.setEditable(false);       // set to read-only
-	//		add(tfCount);                     // "super" Frame adds tfCount
-	//
-	//		btnCount = new Button("Count");   // construct Button
-	//		add(btnCount);                    // "super" Frame adds Button
-	//
-	//		btnCount.addActionListener(this);
-	//		// Clicking Button source fires ActionEvent
-	//		// btnCount registers this instance as ActionEvent listener
-	//
-	//		setTitle("AWT Counter");  // "super" Frame sets title
-	//		setSize(250, 100);        // "super" Frame sets initial window size
-	//
-	//		// System.out.println(this);
-	//		// System.out.println(lblCount);
-	//		// System.out.println(tfCount);
-	//		// System.out.println(btnCount);
-	//
-	//		setVisible(true);         // "super" Frame shows
-	//
-	//		// System.out.println(this);
-	//		// System.out.println(lblCount);
-	//		// System.out.println(tfCount);
-	//		// System.out.println(btnCount);
-	//	}
-	//
-	//	/** The entry main() method */
-	//	public static void main(String[] args) {
-	//		// Invoke the constructor to setup the GUI, by allocating an instance
-	//		new DrawGameBoard();
-	//	}
-	//
-	//	/** ActionEvent handler - Called back upon button-click. */
-	//	@Override
-	//	public void actionPerformed(ActionEvent evt) {
-	//		++count; // increase the counter value
-	//		// Display the counter value on the TextField tfCount
-	//		tfCount.setText(count + ""); // convert int to String
+		
+		prepareGUI();
 	}
+	
+	 private void prepareGUI(){
+	      mainFrame = new Frame("Java AWT Examples");
+	      mainFrame.setSize(400,400);
+	      mainFrame.setLayout(new GridLayout(3, 1));
+	      mainFrame.addWindowListener(new WindowAdapter() {
+	         public void windowClosing(WindowEvent windowEvent){
+	            System.exit(0);
+	         }        
+	      });    
+	      headerLabel = new Label();
+	      headerLabel.setAlignment(Label.CENTER);
+	      statusLabel = new Label();        
+	      statusLabel.setAlignment(Label.CENTER);
+	      statusLabel.setSize(350,100);
+
+	      controlPanel = new Panel();
+	      controlPanel.setLayout(new FlowLayout());
+
+	      mainFrame.add(headerLabel);
+	      mainFrame.add(controlPanel);
+	      mainFrame.add(statusLabel);
+	      mainFrame.setVisible(true);  
+	   }
+	 
+	   private void showImageDemo(){
+		      headerLabel.setText("Control in action: Image"); 
+
+		      controlPanel.add(new ImageComponent("resources/java.jpg"));
+		      mainFrame.setVisible(true);  
+		   }
+	   
+	   class ImageComponent extends Component {
+
+		      BufferedImage img;
+
+		      public void paint(Graphics g) {
+		         g.drawImage(img, 0, 0, null);
+		      }
+
+		      public ImageComponent(String path) {
+		         try {
+		            img = ImageIO.read(new File(path));
+		         } catch (IOException e) {
+		            e.printStackTrace();
+		         }
+		      }
+
+		      public Dimension getPreferredSize() {
+		         if (img == null) {
+		            return new Dimension(100,100);
+		         } else {
+		            return new Dimension(img.getWidth(), img.getHeight());
+		         }
+		      }
+	   }
+		      
 
 	public void printAnalogGameBoardClean(Token[][] gameBoard){ //A clean board for new and reset games
 
@@ -75,7 +87,7 @@ public class DrawGameBoard{  //extends Frame implements ActionListener{
 			System.out.print(" "+(y+1)+" ");
 		System.out.println();
 	}
-	
+
 	public void printAnalogGameBoard(Token[][] gameBoard){
 
 		for(int y=0; y<gameBoard.length; y++){

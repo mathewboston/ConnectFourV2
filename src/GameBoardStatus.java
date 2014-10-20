@@ -8,22 +8,10 @@ public class GameBoardStatus {
 		tie = win = false;
 	}
 
-	//	public void setGameTie() {
-	//		
-	//		if(tie) tie = false;
-	//		else tie = true;
-	//	}
-
 	public boolean getGameTie() {
 
 		return tie;
 	}
-
-	//	public void setGameWin() {
-	//		
-	//		if(win) win = false;
-	//		else win = true;
-	//	}
 
 	public boolean getGameWin() {
 
@@ -216,5 +204,4 @@ public class GameBoardStatus {
 		}
 		return 0;
 	}
-
 }

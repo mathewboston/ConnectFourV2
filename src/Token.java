@@ -2,10 +2,12 @@ public class Token {
 
 	private boolean tokenOne;
 	private boolean tokenTwo;
+	private String tokenImageType;
 
 	public Token() {
 
 		tokenOne = tokenTwo = false;
+		tokenImageType = "src/blankToken.jpg";
 	}
 
 	public void setTokenOne(boolean b) {
@@ -29,11 +31,23 @@ public class Token {
 
 		return tokenTwo;
 	}
+	
+	public String getTokenImageType(){
+		
+		return  tokenImageType;
+	}
+	
+	public void setTokenImageType(){
+		
+		if(tokenOne) tokenImageType = "src/yellowToken.jpg";
+		if(tokenTwo) tokenImageType = "src/redToken.jpg";
+	}
 
 	public void setTokenType(boolean b) {
 
 		if(b) setTokenOne(b);
 		if(!b) setTokenTwo(!b);
+		setTokenImageType();
 	}
 
 	public int getTokenType() {
