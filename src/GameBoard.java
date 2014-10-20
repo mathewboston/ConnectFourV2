@@ -130,12 +130,12 @@ public class GameBoard{
 		if(s==2) System.out.println("\n"+player2+"("+playerToken(s)+")"+" wins!");
 	}
 
-	public static boolean fullBoard(){
-
-		for(int i=0;i<=gameBoard.length; i++)
-			if(gameBoard[0][i]==0) return false;
-		return true;
-	}
+//	public static boolean fullBoard(){
+//
+//		for(int i=0;i<=gameBoard.length; i++)
+//			if(gameBoard[0][i]==0) return false;
+//		return true;
+//	}
 
 	public static void playerTurn(){
 
@@ -157,41 +157,41 @@ public class GameBoard{
 		return player2;
 	}
 
-	public static void initializeBoard(int[][] a){
+//	public static void initializeBoard(int[][] a){
+//
+//		for(int i=0; i<a.length; i++)
+//			for(int j=0; j<a[i].length; j++)
+//				a[i][j] = 0;
+//	}
 
-		for(int i=0; i<a.length; i++)
-			for(int j=0; j<a[i].length; j++)
-				a[i][j] = 0;
-	}
-
-	public static void printBoard(){
-
-		for(int i=0; i<gameBoard.length; i++){
-			System.out.println();
-			for(int j=0; j<gameBoard[i].length; j++)
-				System.out.print("-"+playerToken(gameBoard[i][j])+"-");
-		}
-		System.out.println();
-		for(int i=0; i<=gameBoard.length; i++)
-			System.out.print(" "+(i+1)+" ");
-		System.out.println();
-	}
-
-	public static void printBoardClean(){ //A clean board for new and reset games
-
-		for(int i=0; i<gameBoard.length; i++){
-			System.out.println();
-			for(int j=0; j<gameBoard[i].length; j++)
-				System.out.print("- -");
-		}
-		System.out.println();
-		for(int i=0; i<=gameBoard.length; i++)
-			System.out.print(" "+(i+1)+" ");
-		System.out.println();
-	}
+//	public static void printBoard(){
+//
+//		for(int i=0; i<gameBoard.length; i++){
+//			System.out.println();
+//			for(int j=0; j<gameBoard[i].length; j++)
+//				System.out.print("-"+playerToken(gameBoard[i][j])+"-");
+//		}
+//		System.out.println();
+//		for(int i=0; i<=gameBoard.length; i++)
+//			System.out.print(" "+(i+1)+" ");
+//		System.out.println();
+//	}
+//
+//	public static void printBoardClean(){ //A clean board for new and reset games
+//
+//		for(int i=0; i<gameBoard.length; i++){
+//			System.out.println();
+//			for(int j=0; j<gameBoard[i].length; j++)
+//				System.out.print("- -");
+//		}
+//		System.out.println();
+//		for(int i=0; i<=gameBoard.length; i++)
+//			System.out.print(" "+(i+1)+" ");
+//		System.out.println();
+//	}
 
 	public static void main(String args[]){
-		
+
 		row = 7;
 		column = 8;
 		ui = new UserInteraction();
