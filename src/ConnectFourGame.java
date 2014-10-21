@@ -26,28 +26,59 @@ public class ConnectFourGame {
 		mainGame();
 	}
 	
-	private void playerTurn(){
+	public void playerTurn(){
 		
-		if(playerTurnBoard==1) --playerTurnBoard;
+		if(playerTurnBoard==2) --playerTurnBoard;
 		else ++playerTurnBoard;
 	}
 	
-	private Player playerTurn(int player){
+	public Player playerTurn(int player){
 		
 		return (player==1) ? player1 : player2;
-	}	
+	}
+	
+	public int getPLayerTurn(){
+		
+		return playerTurnBoard;
+	}
+	
+	public void setPlayer(int n, String s){
+		
+		if(n==1) player1.setPLayer(s);
+		if(n==2) player2.setPLayer(s);
+	}
+	
+	public String getPLayer(int n){
+		
+		if(n==1) return player1.getPlayer();
+		if(n==2) return player2.getPlayer();
+		return "NOPLAYERERROR";
+	}
+	
+	public boolean setGameToken(int n){
+		
+		gameBoard.setGameToken(playerTurn(playerTurnBoard), n);
+		gameBoard.printAnalogGameBoard(); //debug
+		if(gameBoard.getGameStatus()) return true;
+		return false;
+	}
+	
+//	public void guiMainGame(){
+//		
+//		while(!gameBoard.getGameStatus()){
+//			if(gameBoard.setGameToken(playerTurn(playerTurnBoard), ui.askUser(1, 8)-1) == -1);
+//				//System.out.println("Column full"); //debug
+//			//playerTurn();
+//			//gameBoard.printAnalogGameBoard(); //debug
+//			//if(gameBoard.getGameStatus()) System.out.println("Yay"); //debug			
+//		}		
+//	}
 	
 	private void mainGame(){
 		
 		//gameBoard.printAnalogGameBoardClean(); //debug
-		gameBoard.loadGameBordGui();
-		while(!gameBoard.getGameStatus()){
-			if(gameBoard.setGameToken(playerTurn(playerTurnBoard), ui.askUser(1, 8)-1) == -1)
-				//System.out.println("Column full"); //debug
-			playerTurn();
-			//gameBoard.printAnalogGameBoard(); //debug
-			//if(gameBoard.getGameStatus()) System.out.println("Yay"); //debug			
-		}		
+		gameBoard.loadGameBordGui(this);
+		//player1.setPLayer(gameBoard.grabHolderString());
 	}
 	
 	public static void main(String args[]){

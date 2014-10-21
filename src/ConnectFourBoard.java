@@ -14,6 +14,11 @@ public class ConnectFourBoard {
 		gameBoardStatus = new GameBoardStatus();
 		drawGameBoard = new DrawGameBoard();
 	}
+	
+	public String grabHolderString(){
+		
+		return drawGameBoard.grabHolderString();
+	}
 
 	public ConnectFourBoard(int x, int y) {
 
@@ -47,9 +52,9 @@ public class ConnectFourBoard {
 		return gameBoardStatus.getGameStatus();
 	}
 	
-	public void loadGameBordGui(){
+	public void loadGameBordGui(ConnectFourGame gameData){
 		
-		drawGameBoard.buildGameBoardGui();
+		drawGameBoard.displayGUI(gameData);
 	}
 
 	public void printAnalogGameBoard(){
