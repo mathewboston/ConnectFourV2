@@ -6,13 +6,13 @@ public class ConnectFourBoard {
 	private Token[][] gameBoard;
 	private int[] position;
 	private GameBoardStatus gameBoardStatus;
-	private DrawGameBoard drawAnalogGameBoard;
+	private DrawGameBoard drawGameBoard;
 
 	public ConnectFourBoard() {
 
 		sizeX = sizeY = 0;
 		gameBoardStatus = new GameBoardStatus();
-		drawAnalogGameBoard = new DrawGameBoard();
+		drawGameBoard = new DrawGameBoard();
 	}
 
 	public ConnectFourBoard(int x, int y) {
@@ -20,7 +20,7 @@ public class ConnectFourBoard {
 		sizeX = x;
 		sizeY = y;
 		gameBoardStatus = new GameBoardStatus();
-		drawAnalogGameBoard = new DrawGameBoard();
+		drawGameBoard = new DrawGameBoard();
 		gameBoard = new Token[sizeY][sizeX];
 		position = new int[sizeX];
 		setGameBoard();
@@ -46,15 +46,20 @@ public class ConnectFourBoard {
 
 		return gameBoardStatus.getGameStatus();
 	}
+	
+	public void loadGameBordGui(){
+		
+		drawGameBoard.buildGameBoardGui();
+	}
 
 	public void printAnalogGameBoard(){
 
-		drawAnalogGameBoard.printAnalogGameBoard(gameBoard);
+		drawGameBoard.printAnalogGameBoard(gameBoard);
 	}
 	
 	public void printAnalogGameBoardClean(){
 
-		drawAnalogGameBoard.printAnalogGameBoardClean(gameBoard);
+		drawGameBoard.printAnalogGameBoardClean(gameBoard);
 	}
 
 	public int getSizeX() {

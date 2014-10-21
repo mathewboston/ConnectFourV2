@@ -1,79 +1,78 @@
 import java.awt.*;
 import java.awt.event.*;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
-
-import javax.imageio.ImageIO;
+import javax.swing.*;
 
 public class DrawGameBoard{  //extends Frame implements ActionListener{
 
-	private Frame mainFrame;
-	private Label headerLabel;
-	private Label statusLabel;
-	private Panel controlPanel;
+	private JFrame mainFrame;
+	private JPanel gameFrame;
+	private JPanel mainTitle;
+	private JPanel newGameMenu;
+	private JPanel QuitMenu;
 
 	public DrawGameBoard() {
-		
+
 		prepareGUI();
 	}
+
+	private void prepareGUI(){
+		
+		int width = 1200;
+		int height = 900;
+		mainFrame = new JFrame("Connect Four");
+		mainFrame.setSize(width, height);
+		mainFrame.setLayout(new GridLayout(2, 1));	
+		mainFrame.setBackground(Color.darkGray);
+		mainFrame.addWindowListener(new WindowAdapter() {
+			public void windowClosing(WindowEvent windowEvent){
+				System.exit(0);
+			}        
+		});		
+		mainTitle = new JPanel();
+		mainTitle.setLayout(new FlowLayout());
+		mainTitle.setSize(width, height);
+		gameFrame = new JPanel();
+		gameFrame.setLayout(new GridLayout(5,1));
+		gameFrame.setSize(width, height);
+		newGameMenu = new JPanel();
+		newGameMenu.setLayout(new FlowLayout());
+		newGameMenu.setSize(20, 20);
+		newGameMenu.addMouseListener(new MouseAdapter(){
+			public void mousePressed(MouseEvent e){
+				mainFrame.setBackground(Color.BLUE);
+			}
+			public void mouseEntered(MouseEvent e){
+				System.out.println("dkdk");
+			}
+		});
+		QuitMenu = new JPanel();
+		QuitMenu.setLayout(new FlowLayout());
+		QuitMenu.setSize(20, 20);
+		QuitMenu.addMouseListener(new MouseAdapter(){
+			public void mousePressed(MouseEvent e){
+				mainFrame.setBackground(Color.white);
+			}
+			public void mouseEntered(MouseEvent e){
+				System.out.println("klllk");
+			}
+		});
+		mainFrame.add(mainTitle);
+		mainFrame.add(gameFrame);
+		gameFrame.add(newGameMenu);
+		gameFrame.add(new JPanel());
+		gameFrame.add(QuitMenu);
+		mainFrame.setVisible(true);
+	}
 	
-	 private void prepareGUI(){
-	      mainFrame = new Frame("Java AWT Examples");
-	      mainFrame.setSize(400,400);
-	      mainFrame.setLayout(new GridLayout(3, 1));
-	      mainFrame.addWindowListener(new WindowAdapter() {
-	         public void windowClosing(WindowEvent windowEvent){
-	            System.exit(0);
-	         }        
-	      });    
-	      headerLabel = new Label();
-	      headerLabel.setAlignment(Label.CENTER);
-	      statusLabel = new Label();        
-	      statusLabel.setAlignment(Label.CENTER);
-	      statusLabel.setSize(350,100);
+	public void buildGameBoardGui(){
+		
+		mainTitle.add(new ImageComponent("img/ConnectFour.png"));
+		newGameMenu.add(new ImageComponent("img/NewGame.png"));
+		QuitMenu.add(new ImageComponent("img/Quit.png"));
+		mainFrame.setVisible(true);
+		gameFrame.setVisible(true);
+	}
 
-	      controlPanel = new Panel();
-	      controlPanel.setLayout(new FlowLayout());
-
-	      mainFrame.add(headerLabel);
-	      mainFrame.add(controlPanel);
-	      mainFrame.add(statusLabel);
-	      mainFrame.setVisible(true);  
-	   }
-	 
-	   private void showImageDemo(){
-		      headerLabel.setText("Control in action: Image"); 
-
-		      controlPanel.add(new ImageComponent("resources/java.jpg"));
-		      mainFrame.setVisible(true);  
-		   }
-	   
-	   class ImageComponent extends Component {
-
-		      BufferedImage img;
-
-		      public void paint(Graphics g) {
-		         g.drawImage(img, 0, 0, null);
-		      }
-
-		      public ImageComponent(String path) {
-		         try {
-		            img = ImageIO.read(new File(path));
-		         } catch (IOException e) {
-		            e.printStackTrace();
-		         }
-		      }
-
-		      public Dimension getPreferredSize() {
-		         if (img == null) {
-		            return new Dimension(100,100);
-		         } else {
-		            return new Dimension(img.getWidth(), img.getHeight());
-		         }
-		      }
-	   }
-		      
 
 	public void printAnalogGameBoardClean(Token[][] gameBoard){ //A clean board for new and reset games
 

@@ -26,26 +26,27 @@ public class ConnectFourGame {
 		mainGame();
 	}
 	
-	public void playerTurn(){
+	private void playerTurn(){
 		
 		if(playerTurnBoard==1) --playerTurnBoard;
 		else ++playerTurnBoard;
 	}
 	
-	public Player playerTurn(int player){
+	private Player playerTurn(int player){
 		
 		return (player==1) ? player1 : player2;
 	}	
 	
-	public void mainGame(){
+	private void mainGame(){
 		
-		gameBoard.printAnalogGameBoardClean();
+		//gameBoard.printAnalogGameBoardClean(); //debug
+		gameBoard.loadGameBordGui();
 		while(!gameBoard.getGameStatus()){
 			if(gameBoard.setGameToken(playerTurn(playerTurnBoard), ui.askUser(1, 8)-1) == -1)
-				System.out.println("Column full");
+				//System.out.println("Column full"); //debug
 			playerTurn();
-			gameBoard.printAnalogGameBoard(); //debug
-			if(gameBoard.getGameStatus()) System.out.println("Yay"); //debug			
+			//gameBoard.printAnalogGameBoard(); //debug
+			//if(gameBoard.getGameStatus()) System.out.println("Yay"); //debug			
 		}		
 	}
 	
