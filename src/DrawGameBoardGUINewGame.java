@@ -14,40 +14,21 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 public class DrawGameBoardGUINewGame extends JPanel {
 	
 	private JTextField textField;
-	private String holder;
 	int playerCounter;
-	
-	public String getHolder(){
-		
-		String tmp = holder;
-		holder = "";
-		return tmp;
-	}
-	
-	public int getPlayerCouter(){
-		
-		return playerCounter;
-	}
-	
-	public void playerCounter(){
-		
-		++playerCounter;
-	}
 	
 	public DrawGameBoardGUINewGame(DrawGameBoardGUI n, ConnectFourGame gameData) {
 		setBackground(Color.DARK_GRAY);
 		setForeground(Color.DARK_GRAY);
-		
-		holder = "";
+
 		playerCounter = 0;
 		textField = new JTextField();
 		textField.setBackground(Color.DARK_GRAY);
 		textField.setForeground(Color.LIGHT_GRAY);
-		textField.setFont(new Font("Karmatic Arcade", Font.PLAIN, 22));
+		textField.setFont(new Font("Karmatic Arcade", Font.PLAIN, 42));
 		textField.setHorizontalAlignment(textField.CENTER);
 		textField.setColumns(10);
 		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon("E:\\Users\\Matt\\Documents\\GitHub\\ConnectFourV2\\img\\ConnectFour.png"));
+		lblNewLabel.setIcon(new ImageIcon(DrawGameBoardGUINewGame.class.getResource("/ConnectFour.png")));
 		
 		JLabel infoString = new JLabel("PLayer One Enter Your Name");
 		infoString.setBackground(Color.BLACK);
@@ -55,47 +36,45 @@ public class DrawGameBoardGUINewGame extends JPanel {
 		infoString.setFont(new Font("Karmatic Arcade", Font.PLAIN, 32));
 		
 		JLabel PlayerToken = new JLabel("");
-		PlayerToken.setIcon(new ImageIcon("E:\\Users\\Matt\\Documents\\GitHub\\ConnectFourV2\\img\\RedToken.png"));
+		PlayerToken.setIcon(new ImageIcon(DrawGameBoardGUINewGame.class.getResource("/RedToken.png")));
 		GroupLayout groupLayout = new GroupLayout(this);
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
-					.addGap(255)
-					.addComponent(textField, GroupLayout.DEFAULT_SIZE, 682, Short.MAX_VALUE)
-					.addGap(267))
-				.addGroup(groupLayout.createSequentialGroup()
-					.addComponent(lblNewLabel, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-					.addGap(4))
-				.addGroup(groupLayout.createSequentialGroup()
-					.addGap(272)
-					.addComponent(infoString)
-					.addContainerGap(292, Short.MAX_VALUE))
-				.addGroup(groupLayout.createSequentialGroup()
-					.addGap(564)
-					.addComponent(PlayerToken)
-					.addContainerGap(581, Short.MAX_VALUE))
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(561)
+							.addComponent(PlayerToken))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(282)
+							.addComponent(infoString))
+						.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
+							.addContainerGap()
+							.addComponent(textField, GroupLayout.DEFAULT_SIZE, 1184, Short.MAX_VALUE))
+						.addComponent(lblNewLabel))
+					.addContainerGap())
 		);
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
-					.addContainerGap()
-					.addComponent(lblNewLabel, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-					.addGap(144)
+					.addGap(19)
+					.addComponent(lblNewLabel)
+					.addGap(136)
 					.addComponent(PlayerToken)
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addComponent(infoString)
 					.addGap(32)
-					.addComponent(textField, GroupLayout.PREFERRED_SIZE, 31, Short.MAX_VALUE)
-					.addGap(245))
+					.addComponent(textField, GroupLayout.PREFERRED_SIZE, 96, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(115, Short.MAX_VALUE))
 		);
 		setLayout(groupLayout);
 		textField.addKeyListener(new KeyAdapter(){
 			public void keyPressed(KeyEvent e){
 				if(e.getKeyCode() == KeyEvent.VK_ENTER){
-					playerCounter();
+					++playerCounter;
 					gameData.setPlayer(playerCounter, textField.getText());
 					textField.setText("");
-					PlayerToken.setIcon(new ImageIcon("E:\\Users\\Matt\\Documents\\GitHub\\ConnectFourV2\\img\\YellowToken.png"));
+					PlayerToken.setIcon(new ImageIcon(DrawGameBoardGUINewGame.class.getResource("/YellowToken.png")));
 					infoString.setText("PLayer Two Enter Your Name");
 					if(playerCounter==2) n.gameGUI(gameData);
 				}

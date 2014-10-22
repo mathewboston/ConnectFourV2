@@ -14,11 +14,6 @@ public class ConnectFourBoard {
 		gameBoardStatus = new GameBoardStatus();
 		drawGameBoard = new DrawGameBoard();
 	}
-	
-	public String grabHolderString(){
-		
-		return drawGameBoard.grabHolderString();
-	}
 
 	public ConnectFourBoard(int x, int y) {
 
@@ -29,6 +24,26 @@ public class ConnectFourBoard {
 		gameBoard = new Token[sizeY][sizeX];
 		position = new int[sizeX];
 		setGameBoard();
+	}
+	
+	public boolean getGameForfeit() {
+
+		return gameBoardStatus.getGameForfeit();
+	}
+	
+	public boolean getGameWin() {
+
+		return gameBoardStatus.getGameWin();
+	}
+	
+	public boolean getGameTie() {
+
+		return gameBoardStatus.getGameTie();
+	}
+	
+	public void setGameForfeit() {
+
+		gameBoardStatus.setGameForfeit();
 	}
 
 	public int setGameToken(Player turn, int placement){ //debug

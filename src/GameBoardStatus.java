@@ -2,10 +2,11 @@ public class GameBoardStatus {
 
 	private boolean tie;
 	private boolean win;
+	private boolean forfeit;
 
 	public GameBoardStatus() {
 
-		tie = win = false;
+		tie = win = forfeit = false;
 	}
 
 	public boolean getGameTie() {
@@ -16,6 +17,16 @@ public class GameBoardStatus {
 	public boolean getGameWin() {
 
 		return win;
+	}
+	
+	public void setGameForfeit() {
+
+		forfeit = true;
+	}
+	
+	public boolean getGameForfeit() {
+
+		return forfeit;
 	}
 	
 	public boolean getGameStatus(){
@@ -128,9 +139,9 @@ public class GameBoardStatus {
 		int x = tmp[0];
 		int y = tmp[1];
 		int status = tmp[2];
-		if((y!=0 && x!=0) && board[y-1][x-1].getTokenType() == tokenType){
+		if((y!=board.length-1 && x!=0) && board[y+1][x-1].getTokenType() == tokenType){
 			if(status < 3){
-				tmp[0] = x+1;
+				tmp[0] = x-1;
 				tmp[1] = y+1;
 				tmp[2] = ++status;
 				status = checkDiagonalWinDownLeft(board, tmp, tokenType);
@@ -146,10 +157,10 @@ public class GameBoardStatus {
 		int x = tmp[0];
 		int y = tmp[1];
 		int status = tmp[2];
-		if((y!=0 && x!=board[y].length-1) && board[y-1][x+1].getTokenType() == tokenType){
+		if((y!=board.length-1 && x!=board[y].length-1) && board[y+1][x+1].getTokenType() == tokenType){
 			if(status < 3){
 				tmp[0] = x+1;
-				tmp[1] = y-1;
+				tmp[1] = y+1;
 				tmp[2] = ++status;
 				status = checkDiagonalWinDownRight(board, tmp, tokenType);
 			}

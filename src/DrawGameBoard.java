@@ -9,11 +9,6 @@ public class DrawGameBoard{
 		gameGUI = new DrawGameBoardGUI(gameData);
 		gameGUI.setVisible(true);
 	}
-	
-	public String grabHolderString(){
-		
-		return gameGUI.getHolderString();
-	}
 
 	public void printAnalogGameBoardClean(Token[][] gameBoard){ //A clean board for new and reset games
 

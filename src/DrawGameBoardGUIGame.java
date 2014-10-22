@@ -1,5 +1,6 @@
 import java.awt.CardLayout;
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
@@ -10,16 +11,10 @@ import javax.swing.JPanel;
 
 public class DrawGameBoardGUIGame extends JPanel {
 
-	private JLabel lblNewLabel;
+	public DrawGameBoardGUIGame(DrawGameBoardGUI n, ConnectFourGame gameData) {
 
-	public DrawGameBoardGUIGame(ConnectFourGame gameData) {
+		gameData.newGameBoard();
 		setBackground(Color.DARK_GRAY);
-
-		//Player1 = new JLabel((String) null);
-		//Player1.setFont(new Font("Karmatic Arcade", Font.PLAIN, 32));
-		//Player2 = new JLabel((String) null);
-		//Player2.setFont(new Font("Karmatic Arcade", Font.PLAIN, 32));
-		//new ImageIcon("E:\\Users\\Matt\\Documents\\GitHub\\ConnectFourV2\\img\\RedToken.png")
 		this.setSize(1226, 614);
 		setLayout(new CardLayout(0, 0));
 
@@ -293,14 +288,51 @@ public class DrawGameBoardGUIGame extends JPanel {
 
 		JLabel gameBoard = new JLabel("");
 		gameBoard.setBounds(283, 48, 585, 465);
-		gameBoard.setIcon(new ImageIcon("E:\\Users\\Matt\\Documents\\GitHub\\ConnectFourV2\\img\\GameBoard.png"));
+		gameBoard.setIcon(new ImageIcon(DrawGameBoardGUINewGame.class.getResource("/GameBoard.png")));
 		gameField.add(gameBoard);
-		
-		lblNewLabel = new JLabel("New label");
-		lblNewLabel.setBounds(112, 269, 46, 14);
-		gameField.add(lblNewLabel);
 
-		JLabel[][] Tokens ={
+		JLabel Player1 = new JLabel(gameData.getPLayer(1));
+		Player1.setHorizontalAlignment(JLabel.CENTER);
+		Player1.setForeground(Color.BLACK);
+		Player1.setBackground(Color.BLACK);
+		Player1.setFont(new Font("Karmatic Arcade", Font.PLAIN, 30));
+		Player1.setBounds(878, 111, 266, 73);
+		gameField.add(Player1);
+
+		JLabel Player2 = new JLabel(gameData.getPLayer(2));
+		Player2.setHorizontalAlignment(JLabel.CENTER);
+		Player2.setForeground(Color.BLACK);
+		Player2.setBackground(Color.BLACK);
+		Player2.setFont(new Font("Karmatic Arcade", Font.PLAIN, 30));
+		Player2.setBounds(10, 111, 266, 73);
+		gameField.add(Player2);
+
+		JLabel yellowToken = new JLabel("");
+		yellowToken.setIcon(new ImageIcon(DrawGameBoardGUINewGame.class.getResource("/YellowToken.png")));
+		yellowToken.setBounds(117, 67, 59, 55);
+		gameField.add(yellowToken);
+
+		JLabel redToken = new JLabel("");
+		redToken.setIcon(new ImageIcon(DrawGameBoardGUINewGame.class.getResource("/RedToken.png")));
+		redToken.setBounds(984, 67, 59, 55);
+		gameField.add(redToken);
+		
+		JLabel forfeitButton = new JLabel("");
+		forfeitButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mousePressed(MouseEvent arg0) {
+				gameData.setGameForfeit();
+				WarningWindow dialog = new WarningWindow(n,gameData);
+				dialog.setLocationRelativeTo(gameField);
+				dialog.setVisible(true);
+			}
+		});
+		
+		forfeitButton.setIcon(new ImageIcon(DrawGameBoardGUINewGame.class.getResource("/Forgeit.png")));
+		forfeitButton.setBounds(325, 524, 504, 93);
+		gameField.add(forfeitButton);
+
+		JLabel[][] Tokens = {
 
 				{Token00,Token10,Token20,Token30,Token40,Token50,Token60},
 				{Token01,Token11,Token21,Token31,Token41,Token51,Token61},
@@ -311,7 +343,7 @@ public class DrawGameBoardGUIGame extends JPanel {
 				{Token06,Token16,Token26,Token36,Token46,Token56,Token66},
 				{Token07,Token17,Token27,Token37,Token47,Token57,Token67}
 		};
-
+		
 		Column0.addMouseListener(new MouseAdapter() {
 
 			int token = 0;
@@ -319,24 +351,24 @@ public class DrawGameBoardGUIGame extends JPanel {
 			public void mouseEntered(MouseEvent arg0) {
 				if(token<=6){
 					if(gameData.getPLayerTurn() == 1)
-						Tokens[0][token].setIcon(new ImageIcon("E:\\Users\\Matt\\Documents\\GitHub\\ConnectFourV2\\img\\RedToken.png"));
+						Tokens[0][token].setIcon(new ImageIcon(DrawGameBoardGUINewGame.class.getResource("/RedToken.png")));
 					if(gameData.getPLayerTurn() == 2)
-						Tokens[0][token].setIcon(new ImageIcon("E:\\Users\\Matt\\Documents\\GitHub\\ConnectFourV2\\img\\YellowToken.png"));
+						Tokens[0][token].setIcon(new ImageIcon(DrawGameBoardGUINewGame.class.getResource("/YellowToken.png")));
 				}
 			}
 			@Override
 			public void mouseExited(MouseEvent e) {
 				if(token<6)
-					Tokens[0][token].setIcon(new ImageIcon("E:\\Users\\Matt\\Documents\\GitHub\\ConnectFourV2\\img\\BlankToken.png"));
+					Tokens[0][token].setIcon(new ImageIcon(DrawGameBoardGUINewGame.class.getResource("/BlankToken.png")));
 			}
 			@Override
 			public void mousePressed(MouseEvent e) {
 				if(token<=6){
 					if(gameData.getPLayerTurn() == 1)
-						Tokens[0][token].setIcon(new ImageIcon("E:\\Users\\Matt\\Documents\\GitHub\\ConnectFourV2\\img\\RedToken.png"));
+						Tokens[0][token].setIcon(new ImageIcon(DrawGameBoardGUINewGame.class.getResource("/RedToken.png")));
 					if(gameData.getPLayerTurn() == 2)
-						Tokens[0][token].setIcon(new ImageIcon("E:\\Users\\Matt\\Documents\\GitHub\\ConnectFourV2\\img\\YellowToken.png"));
-					gameData.setGameToken(0);
+						Tokens[0][token].setIcon(new ImageIcon(DrawGameBoardGUINewGame.class.getResource("/YellowToken.png")));
+					if(gameData.setGameToken(0)) afterGamePanel(n,gameData);
 					if(token<=6)token++;
 					gameData.playerTurn();
 				}
@@ -345,30 +377,30 @@ public class DrawGameBoardGUIGame extends JPanel {
 
 		Column1.addMouseListener(new MouseAdapter() {
 
-			int token = 0;
+			int token1 = 0;
 			@Override
 			public void mouseEntered(MouseEvent arg0) {	
-				if(token<=6){
+				if(token1<=6){
 					if(gameData.getPLayerTurn() == 1)
-						Tokens[1][token].setIcon(new ImageIcon("E:\\Users\\Matt\\Documents\\GitHub\\ConnectFourV2\\img\\RedToken.png"));
+						Tokens[1][token1].setIcon(new ImageIcon(DrawGameBoardGUINewGame.class.getResource("/RedToken.png")));
 					if(gameData.getPLayerTurn() == 2)
-						Tokens[1][token].setIcon(new ImageIcon("E:\\Users\\Matt\\Documents\\GitHub\\ConnectFourV2\\img\\YellowToken.png"));
+						Tokens[1][token1].setIcon(new ImageIcon(DrawGameBoardGUINewGame.class.getResource("/YellowToken.png")));
 				}
 			}
 			@Override
 			public void mouseExited(MouseEvent e) {
-				if(token<6)
-					Tokens[1][token].setIcon(new ImageIcon("E:\\Users\\Matt\\Documents\\GitHub\\ConnectFourV2\\img\\BlankToken.png"));
+				if(token1<6)
+					Tokens[1][token1].setIcon(new ImageIcon(DrawGameBoardGUINewGame.class.getResource("/BlankToken.png")));
 			}
 			@Override
 			public void mousePressed(MouseEvent e) {
-				if(token<=6){
+				if(token1<=6){
 					if(gameData.getPLayerTurn() == 1)
-						Tokens[1][token].setIcon(new ImageIcon("E:\\Users\\Matt\\Documents\\GitHub\\ConnectFourV2\\img\\RedToken.png"));
+						Tokens[1][token1].setIcon(new ImageIcon(DrawGameBoardGUINewGame.class.getResource("/RedToken.png")));
 					if(gameData.getPLayerTurn() == 2)
-						Tokens[1][token].setIcon(new ImageIcon("E:\\Users\\Matt\\Documents\\GitHub\\ConnectFourV2\\img\\YellowToken.png"));
-					gameData.setGameToken(1);
-					if(token<=6)token++;
+						Tokens[1][token1].setIcon(new ImageIcon(DrawGameBoardGUINewGame.class.getResource("/YellowToken.png")));
+					if(gameData.setGameToken(1)) afterGamePanel(n,gameData);
+					if(token1<=6)token1++;
 					gameData.playerTurn();
 				}
 			}
@@ -376,30 +408,30 @@ public class DrawGameBoardGUIGame extends JPanel {
 
 		Column2.addMouseListener(new MouseAdapter() {
 
-			int token = 0;
+			int token2 = 0;
 			@Override
 			public void mouseEntered(MouseEvent arg0) {	
-				if(token<=6){
+				if(token2<=6){
 					if(gameData.getPLayerTurn() == 1)
-						Tokens[2][token].setIcon(new ImageIcon("E:\\Users\\Matt\\Documents\\GitHub\\ConnectFourV2\\img\\RedToken.png"));
+						Tokens[2][token2].setIcon(new ImageIcon(DrawGameBoardGUINewGame.class.getResource("/RedToken.png")));
 					if(gameData.getPLayerTurn() == 2)
-						Tokens[2][token].setIcon(new ImageIcon("E:\\Users\\Matt\\Documents\\GitHub\\ConnectFourV2\\img\\YellowToken.png"));
+						Tokens[2][token2].setIcon(new ImageIcon(DrawGameBoardGUINewGame.class.getResource("/YellowToken.png")));
 				}
 			}
 			@Override
 			public void mouseExited(MouseEvent e) {
-				if(token<6)
-					Tokens[2][token].setIcon(new ImageIcon("E:\\Users\\Matt\\Documents\\GitHub\\ConnectFourV2\\img\\BlankToken.png"));
+				if(token2<6)
+					Tokens[2][token2].setIcon(new ImageIcon(DrawGameBoardGUINewGame.class.getResource("/BlankToken.png")));
 			}
 			@Override
 			public void mousePressed(MouseEvent e) {
-				if(token<=6){
+				if(token2<=6){
 					if(gameData.getPLayerTurn() == 1)
-						Tokens[2][token].setIcon(new ImageIcon("E:\\Users\\Matt\\Documents\\GitHub\\ConnectFourV2\\img\\RedToken.png"));
+						Tokens[2][token2].setIcon(new ImageIcon(DrawGameBoardGUINewGame.class.getResource("/RedToken.png")));
 					if(gameData.getPLayerTurn() == 2)
-						Tokens[2][token].setIcon(new ImageIcon("E:\\Users\\Matt\\Documents\\GitHub\\ConnectFourV2\\img\\YellowToken.png"));
-					gameData.setGameToken(2);
-					if(token<=6)token++;
+						Tokens[2][token2].setIcon(new ImageIcon(DrawGameBoardGUINewGame.class.getResource("/YellowToken.png")));
+					if(gameData.setGameToken(2)) afterGamePanel(n,gameData);
+					if(token2<=6)token2++;
 					gameData.playerTurn();
 				}
 			}
@@ -407,30 +439,30 @@ public class DrawGameBoardGUIGame extends JPanel {
 
 		Column3.addMouseListener(new MouseAdapter() {
 
-			int token = 0;
+			int token3 = 0;
 			@Override
 			public void mouseEntered(MouseEvent arg0) {	
-				if(token<=6){
+				if(token3<=6){
 					if(gameData.getPLayerTurn() == 1)
-						Tokens[3][token].setIcon(new ImageIcon("E:\\Users\\Matt\\Documents\\GitHub\\ConnectFourV2\\img\\RedToken.png"));
+						Tokens[3][token3].setIcon(new ImageIcon(DrawGameBoardGUINewGame.class.getResource("/RedToken.png")));
 					if(gameData.getPLayerTurn() == 2)
-						Tokens[3][token].setIcon(new ImageIcon("E:\\Users\\Matt\\Documents\\GitHub\\ConnectFourV2\\img\\YellowToken.png"));
+						Tokens[3][token3].setIcon(new ImageIcon(DrawGameBoardGUINewGame.class.getResource("/YellowToken.png")));
 				}
 			}
 			@Override
 			public void mouseExited(MouseEvent e) {
-				if(token<6)
-					Tokens[3][token].setIcon(new ImageIcon("E:\\Users\\Matt\\Documents\\GitHub\\ConnectFourV2\\img\\BlankToken.png"));
+				if(token3<6)
+					Tokens[3][token3].setIcon(new ImageIcon(DrawGameBoardGUINewGame.class.getResource("/BlankToken.png")));
 			}
 			@Override
 			public void mousePressed(MouseEvent e) {
-				if(token<=6){
+				if(token3<=6){
 					if(gameData.getPLayerTurn() == 1)
-						Tokens[3][token].setIcon(new ImageIcon("E:\\Users\\Matt\\Documents\\GitHub\\ConnectFourV2\\img\\RedToken.png"));
+						Tokens[3][token3].setIcon(new ImageIcon(DrawGameBoardGUINewGame.class.getResource("/RedToken.png")));
 					if(gameData.getPLayerTurn() == 2)
-						Tokens[3][token].setIcon(new ImageIcon("E:\\Users\\Matt\\Documents\\GitHub\\ConnectFourV2\\img\\YellowToken.png"));
-					gameData.setGameToken(3);
-					if(token<=6)token++;
+						Tokens[3][token3].setIcon(new ImageIcon(DrawGameBoardGUINewGame.class.getResource("/YellowToken.png")));
+					if(gameData.setGameToken(3)) afterGamePanel(n,gameData);
+					if(token3<=6)token3++;
 					gameData.playerTurn();
 				}
 			}
@@ -438,30 +470,30 @@ public class DrawGameBoardGUIGame extends JPanel {
 
 		Column4.addMouseListener(new MouseAdapter() {
 
-			int token = 0;
+			int token4 = 0;
 			@Override
 			public void mouseEntered(MouseEvent arg0) {	
-				if(token<=6){
+				if(token4<=6){
 					if(gameData.getPLayerTurn() == 1)
-						Tokens[4][token].setIcon(new ImageIcon("E:\\Users\\Matt\\Documents\\GitHub\\ConnectFourV2\\img\\RedToken.png"));
+						Tokens[4][token4].setIcon(new ImageIcon(DrawGameBoardGUINewGame.class.getResource("/RedToken.png")));
 					if(gameData.getPLayerTurn() == 2)
-						Tokens[4][token].setIcon(new ImageIcon("E:\\Users\\Matt\\Documents\\GitHub\\ConnectFourV2\\img\\YellowToken.png"));
+						Tokens[4][token4].setIcon(new ImageIcon(DrawGameBoardGUINewGame.class.getResource("/YellowToken.png")));
 				}
 			}
 			@Override
 			public void mouseExited(MouseEvent e) {
-				if(token<6)
-					Tokens[4][token].setIcon(new ImageIcon("E:\\Users\\Matt\\Documents\\GitHub\\ConnectFourV2\\img\\BlankToken.png"));
+				if(token4<6)
+					Tokens[4][token4].setIcon(new ImageIcon(DrawGameBoardGUINewGame.class.getResource("/BlankToken.png")));
 			}
 			@Override
 			public void mousePressed(MouseEvent e) {
-				if(token<=6){
+				if(token4<=6){
 					if(gameData.getPLayerTurn() == 1)
-						Tokens[4][token].setIcon(new ImageIcon("E:\\Users\\Matt\\Documents\\GitHub\\ConnectFourV2\\img\\RedToken.png"));
+						Tokens[4][token4].setIcon(new ImageIcon(DrawGameBoardGUINewGame.class.getResource("/RedToken.png")));
 					if(gameData.getPLayerTurn() == 2)
-						Tokens[4][token].setIcon(new ImageIcon("E:\\Users\\Matt\\Documents\\GitHub\\ConnectFourV2\\img\\YellowToken.png"));
-					gameData.setGameToken(4);
-					if(token<=6)token++;
+						Tokens[4][token4].setIcon(new ImageIcon(DrawGameBoardGUINewGame.class.getResource("/YellowToken.png")));
+					if(gameData.setGameToken(4)) afterGamePanel(n,gameData);
+					if(token4<=6)token4++;
 					gameData.playerTurn();
 				}
 			}
@@ -469,30 +501,30 @@ public class DrawGameBoardGUIGame extends JPanel {
 
 		Column5.addMouseListener(new MouseAdapter() {
 
-			int token = 0;
+			int token5 = 0;
 			@Override
 			public void mouseEntered(MouseEvent arg0) {	
-				if(token<=6){
+				if(token5<=6){
 					if(gameData.getPLayerTurn() == 1)
-						Tokens[5][token].setIcon(new ImageIcon("E:\\Users\\Matt\\Documents\\GitHub\\ConnectFourV2\\img\\RedToken.png"));
+						Tokens[5][token5].setIcon(new ImageIcon(DrawGameBoardGUINewGame.class.getResource("/RedToken.png")));
 					if(gameData.getPLayerTurn() == 2)
-						Tokens[5][token].setIcon(new ImageIcon("E:\\Users\\Matt\\Documents\\GitHub\\ConnectFourV2\\img\\YellowToken.png"));
+						Tokens[5][token5].setIcon(new ImageIcon(DrawGameBoardGUINewGame.class.getResource("/YellowToken.png")));
 				}
 			}
 			@Override
 			public void mouseExited(MouseEvent e) {
-				if(token<6)
-					Tokens[5][token].setIcon(new ImageIcon("E:\\Users\\Matt\\Documents\\GitHub\\ConnectFourV2\\img\\BlankToken.png"));
+				if(token5<6)
+					Tokens[5][token5].setIcon(new ImageIcon(DrawGameBoardGUINewGame.class.getResource("/BlankToken.png")));
 			}
 			@Override
 			public void mousePressed(MouseEvent e) {
-				if(token<=6){
+				if(token5<=6){
 					if(gameData.getPLayerTurn() == 1)
-						Tokens[5][token].setIcon(new ImageIcon("E:\\Users\\Matt\\Documents\\GitHub\\ConnectFourV2\\img\\RedToken.png"));
+						Tokens[5][token5].setIcon(new ImageIcon(DrawGameBoardGUINewGame.class.getResource("/RedToken.png")));
 					if(gameData.getPLayerTurn() == 2)
-						Tokens[5][token].setIcon(new ImageIcon("E:\\Users\\Matt\\Documents\\GitHub\\ConnectFourV2\\img\\YellowToken.png"));
-					gameData.setGameToken(5);
-					if(token<=6)token++;
+						Tokens[5][token5].setIcon(new ImageIcon(DrawGameBoardGUINewGame.class.getResource("/YellowToken.png")));
+					if(gameData.setGameToken(5)) afterGamePanel(n,gameData);
+					if(token5<=6)token5++;
 					gameData.playerTurn();
 				}
 			}
@@ -500,30 +532,30 @@ public class DrawGameBoardGUIGame extends JPanel {
 
 		Column6.addMouseListener(new MouseAdapter() {
 
-			int token = 0;
+			int token6 = 0;
 			@Override
 			public void mouseEntered(MouseEvent arg0) {	
-				if(token<=6){
+				if(token6<=6){
 					if(gameData.getPLayerTurn() == 1)
-						Tokens[6][token].setIcon(new ImageIcon("E:\\Users\\Matt\\Documents\\GitHub\\ConnectFourV2\\img\\RedToken.png"));
+						Tokens[6][token6].setIcon(new ImageIcon(DrawGameBoardGUINewGame.class.getResource("/RedToken.png")));
 					if(gameData.getPLayerTurn() == 2)
-						Tokens[6][token].setIcon(new ImageIcon("E:\\Users\\Matt\\Documents\\GitHub\\ConnectFourV2\\img\\YellowToken.png"));
+						Tokens[6][token6].setIcon(new ImageIcon(DrawGameBoardGUINewGame.class.getResource("/YellowToken.png")));
 				}
 			}
 			@Override
 			public void mouseExited(MouseEvent e) {
-				if(token<6)
-					Tokens[6][token].setIcon(new ImageIcon("E:\\Users\\Matt\\Documents\\GitHub\\ConnectFourV2\\img\\BlankToken.png"));
+				if(token6<6)
+					Tokens[6][token6].setIcon(new ImageIcon(DrawGameBoardGUINewGame.class.getResource("/BlankToken.png")));
 			}
 			@Override
 			public void mousePressed(MouseEvent e) {
-				if(token<=6){
+				if(token6<=6){
 					if(gameData.getPLayerTurn() == 1)
-						Tokens[6][token].setIcon(new ImageIcon("E:\\Users\\Matt\\Documents\\GitHub\\ConnectFourV2\\img\\RedToken.png"));
+						Tokens[6][token6].setIcon(new ImageIcon(DrawGameBoardGUINewGame.class.getResource("/RedToken.png")));
 					if(gameData.getPLayerTurn() == 2)
-						Tokens[6][token].setIcon(new ImageIcon("E:\\Users\\Matt\\Documents\\GitHub\\ConnectFourV2\\img\\YellowToken.png"));
-					if(gameData.setGameToken(6)) lblNewLabel.setText("YOU WIN");
-					if(token<=6)token++;
+						Tokens[6][token6].setIcon(new ImageIcon(DrawGameBoardGUINewGame.class.getResource("/YellowToken.png")));
+					if(gameData.setGameToken(6)) afterGamePanel(n,gameData);
+					if(token6<=6)token6++;
 					gameData.playerTurn();
 				}
 			}
@@ -531,33 +563,40 @@ public class DrawGameBoardGUIGame extends JPanel {
 
 		Column7.addMouseListener(new MouseAdapter() {
 
-			int token = 0;
+			int token7 = 0;
 			@Override
 			public void mouseEntered(MouseEvent arg0) {	
-				if(token<=6){
+				if(token7<=6){
 					if(gameData.getPLayerTurn() == 1)
-						Tokens[7][token].setIcon(new ImageIcon("E:\\Users\\Matt\\Documents\\GitHub\\ConnectFourV2\\img\\RedToken.png"));
+						Tokens[7][token7].setIcon(new ImageIcon(DrawGameBoardGUINewGame.class.getResource("/RedToken.png")));
 					if(gameData.getPLayerTurn() == 2)
-						Tokens[7][token].setIcon(new ImageIcon("E:\\Users\\Matt\\Documents\\GitHub\\ConnectFourV2\\img\\YellowToken.png"));
+						Tokens[7][token7].setIcon(new ImageIcon(DrawGameBoardGUINewGame.class.getResource("/YellowToken.png")));
 				}
 			}
 			@Override
 			public void mouseExited(MouseEvent e) {
-				if(token<6)
-					Tokens[7][token].setIcon(new ImageIcon("E:\\Users\\Matt\\Documents\\GitHub\\ConnectFourV2\\img\\BlankToken.png"));
+				if(token7<6)
+					Tokens[7][token7].setIcon(new ImageIcon(DrawGameBoardGUINewGame.class.getResource("/BlankToken.png")));
 			}
 			@Override
 			public void mousePressed(MouseEvent e) {
-				if(token<=6){
+				if(token7<=6){
 					if(gameData.getPLayerTurn() == 1)
-						Tokens[7][token].setIcon(new ImageIcon("E:\\Users\\Matt\\Documents\\GitHub\\ConnectFourV2\\img\\RedToken.png"));
+						Tokens[7][token7].setIcon(new ImageIcon(DrawGameBoardGUINewGame.class.getResource("/RedToken.png")));
 					if(gameData.getPLayerTurn() == 2)
-						Tokens[7][token].setIcon(new ImageIcon("E:\\Users\\Matt\\Documents\\GitHub\\ConnectFourV2\\img\\YellowToken.png"));
-					if(gameData.setGameToken(7)) lblNewLabel.setText("YOU WIN");
-					if(token<=6)token++;
+						Tokens[7][token7].setIcon(new ImageIcon(DrawGameBoardGUINewGame.class.getResource("/YellowToken.png")));
+					if(gameData.setGameToken(7)) afterGamePanel(n,gameData);
+					if(token7<=6)token7++;
 					gameData.playerTurn();
 				}
 			}
 		});
+	}
+	
+	private void afterGamePanel(DrawGameBoardGUI n, ConnectFourGame gameData){
+		
+		AfterGamePanel GamePanel = new AfterGamePanel(n,gameData);
+		n.setContentPane(GamePanel);
+		GamePanel.setVisible(true);
 	}
 }

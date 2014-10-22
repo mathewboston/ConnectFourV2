@@ -4,14 +4,14 @@ public class ConnectFourGame {
 	private Player player2;
 	private int playerTurnBoard;
 	private ConnectFourBoard gameBoard;
-	private UserInteraction ui;
+	//private UserInteraction ui; //Analog debug
 
 	public ConnectFourGame() {
 
 		player1 = new Player();
 		player2 = new Player();
 		gameBoard = new ConnectFourBoard();
-		ui = new UserInteraction();
+		//ui = new UserInteraction();
 	}
 	
 	public ConnectFourGame(int x, int y) {
@@ -22,8 +22,13 @@ public class ConnectFourGame {
 		player1.setTokenType(true);
 		player2.setTokenType(false);
 		gameBoard = new ConnectFourBoard(8,7);
-		ui = new UserInteraction();
+		//ui = new UserInteraction();
 		mainGame();
+	}
+	
+	public void setGameForfeit() {
+
+		gameBoard.setGameForfeit();
 	}
 	
 	public void playerTurn(){
@@ -42,6 +47,11 @@ public class ConnectFourGame {
 		return playerTurnBoard;
 	}
 	
+	public void newGameBoard(){
+		
+		gameBoard = new ConnectFourBoard(8,7);
+	}
+	
 	public void setPlayer(int n, String s){
 		
 		if(n==1) player1.setPLayer(s);
@@ -55,34 +65,32 @@ public class ConnectFourGame {
 		return "NOPLAYERERROR";
 	}
 	
+	public String getWinStatus(){
+		
+		if(gameBoard.getGameTie()) return "It is a tie!";
+		if(gameBoard.getGameWin()) return playerTurn(playerTurnBoard).getPlayer() + " Wins!";
+		if(gameBoard.getGameForfeit()){
+			playerTurn();
+			return playerTurn(playerTurnBoard).getPlayer() + " Wins!";
+		}
+		return "";
+	}
+	
 	public boolean setGameToken(int n){
 		
 		gameBoard.setGameToken(playerTurn(playerTurnBoard), n);
-		gameBoard.printAnalogGameBoard(); //debug
+		//gameBoard.printAnalogGameBoard(); //debug
 		if(gameBoard.getGameStatus()) return true;
 		return false;
 	}
 	
-//	public void guiMainGame(){
-//		
-//		while(!gameBoard.getGameStatus()){
-//			if(gameBoard.setGameToken(playerTurn(playerTurnBoard), ui.askUser(1, 8)-1) == -1);
-//				//System.out.println("Column full"); //debug
-//			//playerTurn();
-//			//gameBoard.printAnalogGameBoard(); //debug
-//			//if(gameBoard.getGameStatus()) System.out.println("Yay"); //debug			
-//		}		
-//	}
-	
 	private void mainGame(){
 		
-		//gameBoard.printAnalogGameBoardClean(); //debug
 		gameBoard.loadGameBordGui(this);
-		//player1.setPLayer(gameBoard.grabHolderString());
 	}
 	
 	public static void main(String args[]){
 		
-		/*ConnectFourGame currentGame =*/ new ConnectFourGame(8,7);
+		new ConnectFourGame(8,7);
 	}
 }
