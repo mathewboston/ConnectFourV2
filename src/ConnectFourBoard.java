@@ -67,7 +67,7 @@ public class ConnectFourBoard {
 		return gameBoardStatus.getGameStatus();
 	}
 	
-	public void loadGameBordGui(ConnectFourGame gameData){
+	public void loadGameBordGui(ConnectFourGame gameData) throws Exception{
 		
 		drawGameBoard.displayGUI(gameData);
 	}

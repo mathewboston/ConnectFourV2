@@ -14,7 +14,7 @@ public class ConnectFourGame {
 		//ui = new UserInteraction();
 	}
 	
-	public ConnectFourGame(int x, int y) {
+	public ConnectFourGame(int x, int y) throws Exception {
 
 		playerTurnBoard = 1;
 		player1 = new Player();
@@ -84,13 +84,17 @@ public class ConnectFourGame {
 		return false;
 	}
 	
-	private void mainGame(){
+	private void mainGame() throws Exception{
 		
 		gameBoard.loadGameBordGui(this);
 	}
 	
 	public static void main(String args[]){
 		
-		new ConnectFourGame(8,7);
+		try {
+			new ConnectFourGame(8,7);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 }

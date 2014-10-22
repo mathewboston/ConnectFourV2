@@ -1,7 +1,13 @@
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.FontFormatException;
+import java.awt.GraphicsEnvironment;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.URL;
 
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
@@ -16,7 +22,7 @@ public class DrawGameBoardGUINewGame extends JPanel {
 	private JTextField textField;
 	int playerCounter;
 	
-	public DrawGameBoardGUINewGame(DrawGameBoardGUI n, ConnectFourGame gameData) {
+	public DrawGameBoardGUINewGame(DrawGameBoardGUI n, ConnectFourGame gameData) throws Exception {
 		setBackground(Color.DARK_GRAY);
 		setForeground(Color.DARK_GRAY);
 
@@ -24,7 +30,10 @@ public class DrawGameBoardGUINewGame extends JPanel {
 		textField = new JTextField();
 		textField.setBackground(Color.DARK_GRAY);
 		textField.setForeground(Color.LIGHT_GRAY);
-		textField.setFont(new Font("Karmatic Arcade", Font.PLAIN, 42));
+		Font KA = new Font("Karmatic Arcade", Font.PLAIN, 42);
+		GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+		ge.registerFont(KA);
+		textField.setFont(KA);
 		textField.setHorizontalAlignment(textField.CENTER);
 		textField.setColumns(10);
 		JLabel lblNewLabel = new JLabel("");
@@ -34,6 +43,7 @@ public class DrawGameBoardGUINewGame extends JPanel {
 		infoString.setBackground(Color.BLACK);
 		infoString.setForeground(new Color(192, 192, 192));
 		infoString.setFont(new Font("Karmatic Arcade", Font.PLAIN, 32));
+		infoString.setFont(KA);
 		
 		JLabel PlayerToken = new JLabel("");
 		PlayerToken.setIcon(new ImageIcon(DrawGameBoardGUINewGame.class.getResource("/RedToken.png")));
@@ -42,30 +52,32 @@ public class DrawGameBoardGUINewGame extends JPanel {
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(561)
-							.addComponent(PlayerToken))
-						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(282)
-							.addComponent(infoString))
 						.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
 							.addContainerGap()
-							.addComponent(textField, GroupLayout.DEFAULT_SIZE, 1184, Short.MAX_VALUE))
-						.addComponent(lblNewLabel))
+							.addComponent(textField, GroupLayout.DEFAULT_SIZE, 1190, Short.MAX_VALUE))
+						.addComponent(lblNewLabel, Alignment.TRAILING))
 					.addContainerGap())
+				.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
+					.addContainerGap(172, Short.MAX_VALUE)
+					.addComponent(infoString, GroupLayout.PREFERRED_SIZE, 883, GroupLayout.PREFERRED_SIZE)
+					.addGap(149))
+				.addGroup(groupLayout.createSequentialGroup()
+					.addGap(575)
+					.addComponent(PlayerToken)
+					.addContainerGap(576, Short.MAX_VALUE))
 		);
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
 					.addGap(19)
 					.addComponent(lblNewLabel)
-					.addGap(136)
+					.addGap(150)
 					.addComponent(PlayerToken)
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addComponent(infoString)
-					.addGap(32)
+					.addGap(18)
 					.addComponent(textField, GroupLayout.PREFERRED_SIZE, 96, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(115, Short.MAX_VALUE))
+					.addContainerGap(104, Short.MAX_VALUE))
 		);
 		setLayout(groupLayout);
 		textField.addKeyListener(new KeyAdapter(){

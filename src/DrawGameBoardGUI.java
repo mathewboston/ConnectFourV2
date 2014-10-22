@@ -18,7 +18,7 @@ public class DrawGameBoardGUI extends JFrame {
 	public DrawGameBoardGUIGame gamePane;
 	private DrawGameBoardGUINewGame newGame;
 
-	public DrawGameBoardGUI(ConnectFourGame gameData) {
+	public DrawGameBoardGUI(ConnectFourGame gameData) throws Exception {
 		
 		setIconImage(Toolkit.getDefaultToolkit().getImage(DrawGameBoardGUI.class.getResource("/RedToken.png")));
 		setTitle("Connect Four");

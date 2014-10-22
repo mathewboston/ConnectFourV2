@@ -2,6 +2,7 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.Font;
+import java.awt.GraphicsEnvironment;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
@@ -27,7 +28,10 @@ public class WarningWindow extends JDialog {
 			JTextPane txtpnAreYouSure = new JTextPane();
 			txtpnAreYouSure.setEditable(false);
 			txtpnAreYouSure.setForeground(Color.BLACK);
-			txtpnAreYouSure.setFont(new Font("Karmatic Arcade", Font.PLAIN, 32));
+			Font KA = new Font("Karmatic Arcade", Font.PLAIN, 32);
+			GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+			ge.registerFont(KA);
+			txtpnAreYouSure.setFont(KA);
 			txtpnAreYouSure.setText("Are you Sure?");
 			txtpnAreYouSure.setBackground(Color.DARK_GRAY);
 			contentPanel.add(txtpnAreYouSure);

@@ -4,7 +4,7 @@ public class DrawGameBoard{
 
 	public DrawGameBoard() {}
 	
-	public void displayGUI(ConnectFourGame gameData){
+	public void displayGUI(ConnectFourGame gameData) throws Exception{
 		
 		gameGUI = new DrawGameBoardGUI(gameData);
 		gameGUI.setVisible(true);

@@ -1,5 +1,6 @@
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.GraphicsEnvironment;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
@@ -35,7 +36,10 @@ public class AfterGamePanel extends JPanel {
 		
 		JLabel winStatus = new JLabel(gameData.getWinStatus());
 		winStatus.setHorizontalAlignment(JLabel.CENTER);
-		winStatus.setFont(new Font("Karmatic Arcade", Font.PLAIN, 80));
+		Font KA = new Font("Karmatic Arcade", Font.PLAIN, 80);
+		GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+		ge.registerFont(KA);
+		winStatus.setFont(KA);
 		winStatus.setForeground(Color.LIGHT_GRAY);
 		winStatus.setBackground(Color.WHITE);
 		GroupLayout groupLayout = new GroupLayout(this);
