@@ -181,7 +181,6 @@ public class GameBoardStatus {
 			(checkDiagonalWinDownRight(board, tokenLocation, tokenType)==3) ? true : false;
 	}
 
-
 	private boolean checkDiagonalWin(Token[][] board, int[] tokenLocation, int tokenType){
 
 		return checkDiagonalWinUp(board, tokenLocation, tokenType) ? true:
