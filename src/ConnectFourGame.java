@@ -1,16 +1,19 @@
-public class ConnectFourGame {
+public class ConnectFourGame extends GameTimer{
 	
 	private Player player1;
 	private Player player2;
 	private int playerTurnBoard;
 	private ConnectFourBoard gameBoard;
-	//private UserInteraction ui; //Analog debug
-
+	public GameTimer gameTime;
+	private GameStatusLogger gameLogger;
+	//private UserInteraction ui; //Analog debu
+	
 	public ConnectFourGame() {
 
 		player1 = new Player();
 		player2 = new Player();
 		gameBoard = new ConnectFourBoard();
+		gameLogger = new GameStatusLogger();
 		//ui = new UserInteraction();
 	}
 	
@@ -21,6 +24,7 @@ public class ConnectFourGame {
 		player2 = new Player();
 		player1.setTokenType(true);
 		player2.setTokenType(false);
+		gameLogger = new GameStatusLogger();
 		gameBoard = new ConnectFourBoard(8,7);
 		//ui = new UserInteraction();
 		mainGame();
@@ -79,13 +83,15 @@ public class ConnectFourGame {
 	public boolean setGameToken(int n){
 		
 		gameBoard.setGameToken(playerTurn(playerTurnBoard), n);
+		gameLogger.logPlayerInteraction(playerTurn(playerTurnBoard).getPlayer(), 0, n);
 		//gameBoard.printAnalogGameBoard(); //debug
 		if(gameBoard.getGameStatus()) return true;
 		return false;
 	}
 	
 	private void mainGame() throws Exception{
-		
+	
+		//gameLogger.start();
 		gameBoard.loadGameBordGui(this);
 	}
 	

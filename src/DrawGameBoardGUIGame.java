@@ -9,6 +9,11 @@ import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
 
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeEvent;
+import java.util.Timer;
+import java.util.TimerTask;
+
 public class DrawGameBoardGUIGame extends JPanel {
 
 	public DrawGameBoardGUIGame(DrawGameBoardGUI n, ConnectFourGame gameData) {
@@ -331,6 +336,18 @@ public class DrawGameBoardGUIGame extends JPanel {
 		forfeitButton.setIcon(new ImageIcon(DrawGameBoardGUINewGame.class.getResource("/Forgeit.png")));
 		forfeitButton.setBounds(325, 524, 504, 93);
 		gameField.add(forfeitButton);
+		
+		gameData.gameTime = new GameTimer();//.start();
+		gameData.gameTime.start();
+		Timer gamePanelTimer = new Timer();
+		
+		JLabel ClockField = new JLabel("00 00");
+		ClockField.setForeground(Color.BLACK);
+		ClockField.setHorizontalAlignment(JLabel.CENTER);
+		ClockField.setFont(new Font("Karmatic Arcade", Font.PLAIN, 32));
+		ClockField.setBackground(Color.DARK_GRAY);
+		ClockField.setBounds(295, 11, 555, 41);
+		gameField.add(ClockField);
 
 		JLabel[][] Tokens = {
 
@@ -343,6 +360,15 @@ public class DrawGameBoardGUIGame extends JPanel {
 				{Token06,Token16,Token26,Token36,Token46,Token56,Token66},
 				{Token07,Token17,Token27,Token37,Token47,Token57,Token67}
 		};
+	
+		gamePanelTimer.scheduleAtFixedRate(new TimerTask() {
+
+			@Override
+			public void run() {
+				
+				ClockField.setText(String.format("%02d", gameData.gameTime.getGameMinutes())+" "+String.format("%02d", gameData.gameTime.getGameSeconds()));
+			}			
+		}, 1000, 1000);	
 		
 		Column0.addMouseListener(new MouseAdapter() {
 
